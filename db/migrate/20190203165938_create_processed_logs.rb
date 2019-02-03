@@ -4,6 +4,7 @@ class CreateProcessedLogs < ActiveRecord::Migration[5.2]
       t.references :log
       t.string :phase
       t.boolean :all_phase_done
+      t.text :content
 
       t.timestamps
     end

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_165938) do
     t.integer "log_id"
     t.string "phase"
     t.boolean "all_phase_done"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["log_id"], name: "index_processed_logs_on_log_id"

@@ -1,0 +1,12 @@
+<%= form_for(:processing, url: processings_path) do |form| %>
+
+  <%= form.label :log %>
+  <%= form.collection_select :log_id, Log.all, :id, :id, class: 'form-control' %>
+
+  <%= form.label :hostname %>
+  <%= form.text_field :hostname, class: 'form-control' %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

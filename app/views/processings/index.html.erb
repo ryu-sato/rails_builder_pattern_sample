@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Processings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @processings.each do |processing| %>
+      <tr>
+        <td><%= link_to 'Show', processing %></td>
+        <td><%= link_to 'Edit', edit_processing_path(processing) %></td>
+        <td><%= link_to 'Destroy', processing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Processing', new_processing_path %>

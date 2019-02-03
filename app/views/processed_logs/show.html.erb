@@ -10,5 +10,10 @@
   <%= @processed_log.all_phase_done %>
 </p>
 
+<p>
+  <strong>Content:</strong>
+  <pre><%= @processed_log.content %></pre>
+</p>
+
 <%= link_to 'Edit', edit_processed_log_path(@processed_log) %> |
 <%= link_to 'Back', processed_logs_path %>
