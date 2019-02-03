@@ -1,10 +1,10 @@
-module ReplaceCmdA do
+module ReplaceCmdA
   def apply_to?(key = "", cmd_name, os_version)
-    my_cmd = key == "user1" && cmd_name == "cmd_a"
+    my_cmd = (key == "user1" && cmd_name == "cmd_a")
     return my_cmd if os_version.blank?
 
-    os_version.split('.')&.first
-    my_cmd && os_version == "14"
+    ver = os_version.split('.')&.first
+    my_cmd && ver == "14"
   end
 
   def process_something(cmd_result)

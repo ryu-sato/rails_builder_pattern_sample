@@ -1,4 +1,4 @@
-module ReplaceCmdC do
+module ReplaceCmdC
   def apply_to?(key = "", cmd_name, os_version)
     key == "user2" && cmd_name == "cmd_c"
   end

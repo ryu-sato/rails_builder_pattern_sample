@@ -4,12 +4,12 @@ class PluginLoader
   attr_reader :plugins
 
   def initialize
-    @plugin_dir_base = './plugins'
+    @plugin_dir_base = File.join(Rails.root, 'plugins')
     extension = 'rb'
     @plugins = []
-    Dir.glob(@plugin_dir_base + "*.#{extension}").each do |p|
+    Dir.glob(File.join(@plugin_dir_base, '**', "*.#{extension}")).each do |p|
       require p
-  binding.pry
+
       @plugins << Object.const_get(to_classname(p)).new
     end
   end
