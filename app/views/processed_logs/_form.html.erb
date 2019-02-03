@@ -1,0 +1,27 @@
+<%= form_with(model: processed_log, local: true) do |form| %>
+  <% if processed_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(processed_log.errors.count, "error") %> prohibited this processed_log from being saved:</h2>
+
+      <ul>
+      <% processed_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :phase %>
+    <%= form.text_field :phase %>
+  </div>
+
+  <div class="field">
+    <%= form.label :all_phase_done %>
+    <%= form.check_box :all_phase_done %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phase: MyString
+  all_phase_done: false
+
+two:
+  phase: MyString
+  all_phase_done: false

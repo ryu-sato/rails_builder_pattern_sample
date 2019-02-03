@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phase:</strong>
+  <%= @processed_log.phase %>
+</p>
+
+<p>
+  <strong>All phase done:</strong>
+  <%= @processed_log.all_phase_done %>
+</p>
+
+<%= link_to 'Edit', edit_processed_log_path(@processed_log) %> |
+<%= link_to 'Back', processed_logs_path %>
