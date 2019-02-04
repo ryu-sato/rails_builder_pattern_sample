@@ -8,7 +8,7 @@ class PluginLoader
     @plugins = []
     Dir.glob(File.join(plugin_dir_path, '**', "*.#{extension}")).each do |p|
       require p
-binding.pry
+
       @plugins << Object.const_get(to_classname(p)).new
     end
   end

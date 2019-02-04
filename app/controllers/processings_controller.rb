@@ -10,9 +10,9 @@ class ProcessingsController < ApplicationController
   def create
     seperator = '###PROMPT###'
 
-    key = 'user1'
+    organization = 'user1'
     hostname = processing_log_params[:hostname]
-    os_version = '14.0.3'
+    os_version = '15.0.3'
 
     log = Log.find(processing_log_params[:log_id])
     parsed_log = log.content.gsub(/^\[.*[0-9][0-9]:[0-9][0-9]:[0-9][0-9]\..*201[7|8|9]\] /, "")
@@ -38,7 +38,7 @@ class ProcessingsController < ApplicationController
 
     plugins = PluginLoader.instance.plugins
     cmd_logs.each do |cmd_log|
-      appliers = plugins.select {|p| p.apply_to?(key, cmd_log[:name], os_version) }
+      appliers = plugins.select {|p| p.apply_to?(key: organization, cmd_name: cmd_log[:name], os_version: os_version) }
 
       appliers.each do |p|
         cmd_log[:result] = p.process_something(cmd_log[:result])

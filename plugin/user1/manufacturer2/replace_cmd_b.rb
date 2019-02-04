@@ -1,7 +1,7 @@
 module User1
   module Manufacturer2
     class ReplaceCmdB
-      def apply_to?(key = "", cmd_name, os_version)
+      def apply_to?(key: "", cmd_name:, os_version:)
         my_cmd = (key == "user1" && cmd_name == "cmd_b")
         return my_cmd if os_version.blank?
 
