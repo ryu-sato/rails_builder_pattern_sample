@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_165938) do
+ActiveRecord::Schema.define(version: 2019_05_27_171246) do
 
   create_table "logs", force: :cascade do |t|
     t.text "content"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 2019_02_03_165938) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["log_id"], name: "index_processed_logs_on_log_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
