@@ -88,3 +88,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # Timezone Data for TZInfo (http://tzinfo.github.io)
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Flexible authentication solution for Rails with Warden (https://github.com/plataformatec/devise)
+gem 'devise'

@@ -1,24 +1,35 @@
-# README
+# How to run
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Only execute when run at first
 
-Things you may want to cover:
+1. Clone Git repository
+    ```
+    git clone https://github.com/ryu-sato/rails_builder_pattern_sample.git
+    ```
+1. Install GEMs
+    ```
+    cd rails_builder_pattern_sample
+    bundle install
+    ```
+1. Initialize DB
+    ```
+    rails db:create db:migrate db:seed
+    ```
 
-* Ruby version
+## Execute every time
 
-* System dependencies
+1. Change current directory to top of local repository
+1. (Only execute when Gemfile is updated) Initialize or update DB schema and seeds
+    ```
+    rails db:migrate
+    ```
+1. Execute Rails
+    ```
+    rails s
+    ```
 
-* Configuration
+# User Account
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+|User name|Password|
+| --- | --- |
+|admin@a.a|password0000 (if you login at least once, passwordYYMM *YYMM is updated date)|
