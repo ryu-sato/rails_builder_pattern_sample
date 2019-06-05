@@ -32,4 +32,4 @@
 
 |User name|Password|
 | --- | --- |
-|admin@a.a|password0000 (if you login at least once, passwordYYMM *YYMM is updated date)|
+|admin|"passwordYYMM" (if you login at 2019/06/01, password is "password1906')|

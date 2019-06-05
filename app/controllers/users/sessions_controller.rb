@@ -10,7 +10,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    # 定期パスワード変更の超簡易実装
+    return super if sign_in_params["username"] != 'admin'
+
+    # admin のみ定期パスワード変更の超簡易実装
     input_year_and_month = params[:user][:password].slice!(-4..-1)
     correct_year_and_month = Time.zone.today.strftime('%y%m')
     if input_year_and_month == correct_year_and_month
