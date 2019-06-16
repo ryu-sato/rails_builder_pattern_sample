@@ -10,7 +10,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    return super if sign_in_params["username"] != 'admin'
+    return super if sign_in_params["username"] != 'root'
 
     # admin のみ定期パスワード変更の超簡易実装
     input_year_and_month = params[:user][:password].slice!(-4..-1)

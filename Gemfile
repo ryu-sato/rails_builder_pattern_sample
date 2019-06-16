@@ -91,3 +91,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Flexible authentication solution for Rails with Warden (https://github.com/plataformatec/devise)
 gem 'devise'
+
+# Devise extension to allow authentication via LDAP (https://github.com/cschiewek/devise_ldap_authenticatable)
+gem 'devise_ldap_authenticatable'
