@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
+
   root 'logs#index'
   resources :processings, only: [:new, :create]
   resources :processed_logs
