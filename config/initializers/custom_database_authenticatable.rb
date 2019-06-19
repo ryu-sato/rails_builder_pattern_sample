@@ -11,14 +11,14 @@ module Devise
       def authenticate!
         return fail(:invalid) unless valid_for_params_auth?
 
-        is_admin = params_auth_hash[:username] == 'root'
+        is_admin = params_auth_hash[:username] == 'admin'
         password = params_auth_hash[:password]
 
         # admin ユーザはパスワード末尾にYYMMがアクセス日と異なれば認証NGとする
         if is_admin
           input_year_and_month = password.slice!(-4..-1)
           correct_year_and_month = Time.zone.today.strftime('%y%m')
-          return fail(:invalid_password) if input_year_and_month != correct_year_and_month
+          return fail(:not_found_in_database) if input_year_and_month != correct_year_and_month
         end
 
         # 内部で認証するユーザ一覧に存在すればパスワード認証を行う
