@@ -99,3 +99,6 @@ gem 'devise_ldap_authenticatable'
 
 # Roles library with resource scoping (https://github.com/RolifyCommunity/rolify)
 gem 'rolify'
+
+# Simple authorization solution for Rails. (https://github.com/CanCanCommunity/cancancan)
+gem 'cancancan'

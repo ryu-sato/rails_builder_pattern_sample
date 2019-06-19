@@ -25,6 +25,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :ldap_authenticatable, :rememberable, :timeoutable
 
+  after_create :assign_default_role
+
   validates :username, presence: true, uniqueness: true
   validates :external, inclusion: { in: [true, false] }, exclusion: { in: [nil] }
 

@@ -8,6 +8,7 @@
 
 User.find_or_create_by(username: 'admin') do |user|
   user.password = 'password'
-  user.add_role(:admin)
   user.save!
+
+  user.add_role(:admin)
 end
