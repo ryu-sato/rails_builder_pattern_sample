@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  rescue_from Net::LDAP::ConnectionRefusedError, with: :handle_401
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -28,4 +29,11 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def handle_401(exception = nil)
+    logger.info "Rendering 401 with exception: #{exception.message}" if exception
+
+    set_flash_message!(:notice, :not_found_in_database)
+    redirect_to new_user_session_path
+  end
 end
