@@ -96,3 +96,6 @@ gem 'devise'
 
 # Devise extension to allow authentication via LDAP (https://github.com/cschiewek/devise_ldap_authenticatable)
 gem 'devise_ldap_authenticatable'
+
+# Roles library with resource scoping (https://github.com/RolifyCommunity/rolify)
+gem 'rolify'
