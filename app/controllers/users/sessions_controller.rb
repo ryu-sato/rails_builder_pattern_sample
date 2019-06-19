@@ -9,19 +9,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    return super if sign_in_params["username"] != 'root'
-
-    # admin のみ定期パスワード変更の超簡易実装
-    input_year_and_month = params[:user][:password].slice!(-4..-1)
-    correct_year_and_month = Time.zone.today.strftime('%y%m')
-    if input_year_and_month == correct_year_and_month
-      super
-    else
-      return_path = request.referer.presence || root_path
-      redirect_to return_path
-    end
-  end
+  # def create
+  #   self.resource = warden.authenticate!(auth_options)
+  #   set_flash_message!(:notice, :signed_in)
+  #   sign_in(resource_name, resource)
+  #   yield resource if block_given?
+  #   respond_with resource, location: after_sign_in_path_for(resource)
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
