@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  rescue_from Net::LDAP::ConnectionRefusedError, with: :handle_401
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -9,19 +10,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    return super if sign_in_params["username"] != 'admin'
-
-    # admin のみ定期パスワード変更の超簡易実装
-    input_year_and_month = params[:user][:password].slice!(-4..-1)
-    correct_year_and_month = Time.zone.today.strftime('%y%m')
-    if input_year_and_month == correct_year_and_month
-      super
-    else
-      return_path = request.referer.presence || root_path
-      redirect_to return_path
-    end
-  end
+  # def create
+  #   self.resource = warden.authenticate!(auth_options)
+  #   set_flash_message!(:notice, :signed_in)
+  #   sign_in(resource_name, resource)
+  #   yield resource if block_given?
+  #   respond_with resource, location: after_sign_in_path_for(resource)
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -34,4 +29,11 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def handle_401(exception = nil)
+    logger.info "Rendering 401 with exception: #{exception.message}" if exception
+
+    set_flash_message!(:notice, :not_found_in_database)
+    redirect_to new_user_session_path
+  end
 end
