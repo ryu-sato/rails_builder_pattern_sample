@@ -56,9 +56,6 @@ group :development, :test do
   gem 'pry-byebug'
   # Walk the stack in a Pry session (https://github.com/pry/pry-stack_explorer)
   gem 'pry-stack_explorer'
-  
-  # Add comments to your Gemfile with each dependency's description. (https://github.com/ivantsepp/annotate_gem)
-  gem 'annotate_gem'
 end
 
 group :development do
@@ -72,6 +69,11 @@ group :development do
   gem 'spring'
   # Makes spring watch files using the listen gem. (https://github.com/jonleighton/spring-watcher-listen)
   gem 'spring-watcher-listen', '~> 2.0.0'
+  
+  # Add comments to your Gemfile with each dependency's description. (https://github.com/ivantsepp/annotate_gem)
+  gem 'annotate_gem'
+  # Annotates Rails Models, routes, fixtures, and others based on the database schema. (http://github.com/ctran/annotate_models)
+  gem 'annotate'
 end
 
 group :test do
