@@ -2,7 +2,7 @@ ActiveAdmin.register User do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :username
+  permit_params :username, :password
 
 #
 # or
@@ -23,4 +23,10 @@ ActiveAdmin.register User do
     f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
 
+  index do
+    selectable_column
+    column :username
+    column :external
+    actions
+  end
 end
