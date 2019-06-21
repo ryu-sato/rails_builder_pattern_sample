@@ -19,9 +19,13 @@
 #
 
 class User < ApplicationRecord
+  rolify
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :ldap_authenticatable, :rememberable, :timeoutable
+
+  after_create :assign_default_role
 
   validates :username, presence: true, uniqueness: true
   validates :external, inclusion: { in: [true, false] }, exclusion: { in: [nil] }
@@ -42,5 +46,11 @@ class User < ApplicationRecord
   # LDAP ユーザの場合は external フラグを true にする
   def ldap_before_save
     self.external = true
+    self.add_role(:user)
+  end
+
+  # default の role を設定する
+  def assign_default_role
+    self.add_role(:guest) if self.roles.blank?
   end
 end

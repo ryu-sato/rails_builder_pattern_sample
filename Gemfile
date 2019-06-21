@@ -96,3 +96,12 @@ gem 'devise'
 
 # Devise extension to allow authentication via LDAP (https://github.com/cschiewek/devise_ldap_authenticatable)
 gem 'devise_ldap_authenticatable'
+
+# Roles library with resource scoping (https://github.com/RolifyCommunity/rolify)
+gem 'rolify'
+
+# Simple authorization solution for Rails. (https://github.com/CanCanCommunity/cancancan)
+gem 'cancancan'
+
+# Active Admin is a Ruby on Rails plugin for generating administration style interfaces. It abstracts common business application patterns to make it simple for developers to implement beautiful and elegant interfaces with very little effort. (https://activeadmin.info)
+gem 'activeadmin'

@@ -8,6 +8,8 @@ class ProcessingsController < ApplicationController
   # POST /processings
   # POST /processings.json
   def create
+    authorize! :manage, ProcessedLog
+
     seperator = '###PROMPT###'
 
     organization = 'user1'
