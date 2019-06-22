@@ -1,6 +1,4 @@
 class LogsController < ApplicationController
-  load_and_authorize_resource
-
   before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   # GET /logs
