@@ -1,4 +1,6 @@
 class ProcessingsController < ApplicationController
+  authorize_resource
+
   before_action :set_processing, only: [:show, :edit, :update, :destroy]
 
   # GET /processings/new

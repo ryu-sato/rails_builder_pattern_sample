@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  authorize_resource
+  check_authorization unless: :skip_checking_authorzation?
 
   rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
     render :text => exception, :status => 500
@@ -35,5 +35,15 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to main_app.root_url, notice: exception.message }
       format.js   { head :forbidden, status: 403, content_type: 'text/html' }
     end
+  end
+
+  def skip_checking_authorzation?
+    # devise による login/logout セッション操作はログイン前のため check_authorization は skip する
+    # ActiveAdmin は内部で権限管理が働くので、check_authorization は skip する
+    devise_controller? || activeadmin_controller?
+  end
+
+  def activeadmin_controller?
+    self.class.ancestors.include? ActiveAdmin::BaseController
   end
 end
