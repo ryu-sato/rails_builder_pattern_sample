@@ -1,4 +1,6 @@
 class ProcessedLogsController < ApplicationController
+  authorize_resource
+
   before_action :set_processed_log, only: [:show, :edit, :update, :destroy]
 
   # GET /processed_logs
