@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
   check_authorization unless: :skip_checking_authorzation?
 
-  rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
-    render :text => exception, :status => 500
-  end
+  rescue_from Exception, with: :handle_500
   rescue_from CanCan::AccessDenied, with: :handle_403
   rescue_from Net::LDAP::ConnectionRefusedError, with: :handle_401
 
