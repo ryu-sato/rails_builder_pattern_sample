@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :handle_403
   rescue_from Net::LDAP::ConnectionRefusedError, with: :handle_401
 
+  before_action :set_paper_trail_whodunnit
   before_action :authenticate_user!
 
   # リソースへの権限が無かった場合はログインページへリダイレクトする
@@ -43,5 +44,9 @@ class ApplicationController < ActionController::Base
 
   def activeadmin_controller?
     self.class.ancestors.include? ActiveAdmin::BaseController
+  end
+
+  def user_for_paper_trail
+    User.find(current_user.id).username
   end
 end
