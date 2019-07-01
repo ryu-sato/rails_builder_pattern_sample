@@ -1,9 +1,4 @@
-ActiveAdmin.register Version do
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  permit_params :item_type, :item_id, :event, :whodunnit, :object, :created_at
-
+ActiveAdmin.register PaperTrail::Version, as: "Version" do
   actions :all, except: [:new, :show, :edit]
 
   index do
