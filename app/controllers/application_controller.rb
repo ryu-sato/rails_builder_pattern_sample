@@ -47,6 +47,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_for_paper_trail
-    User.find(current_user.id).username
+    user_signed_in? ? User.find(current_user.id).username : 'public user'
   end
 end
