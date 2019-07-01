@@ -16,5 +16,7 @@
 #
 
 class ProcessedLog < ApplicationRecord
+  has_paper_trail
+
   belongs_to :log, inverse_of: :processed_logs
 end
