@@ -15,5 +15,10 @@
   <pre><%= @processed_log.content %></pre>
 </p>
 
+<p>
+  <strong>Originator:</strong>
+  <%= @processed_log.paper_trail.originator %>
+</p>
+
 <%= link_to 'Edit', edit_processed_log_path(@processed_log) %> |
 <%= link_to 'Back', processed_logs_path %>
