@@ -74,6 +74,9 @@ group :development do
   gem 'annotate_gem'
   # Annotates Rails Models, routes, fixtures, and others based on the database schema. (http://github.com/ctran/annotate_models)
   gem 'annotate'
+
+  # A Ruby language server (http://solargraph.org)
+  gem 'solargraph'
 end
 
 group :test do
